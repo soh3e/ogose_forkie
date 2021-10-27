@@ -1,0 +1,11 @@
+#!/bin/bash
+awk -F: '($3>=1000)&&($1!="nobody"){print$1}' /etc/passwd > users.txt
+
+while read p; do
+        k=1
+        user_a=$(sed -n "$k,$k"'p' users.txt)
+        echo "$user_a"':nice'| chpasswd
+        ((k=k+1))
+done < users.txt
+
+
