@@ -1,4 +1,7 @@
 #!/bin/bash
+cd /
+mkdir scripts
+cd scripts
 awk -F: '($3>=1000)&&($1!="nobody"){print$1}' /etc/passwd > users.txt
 grep -Fvf authusers.txt users.txt > sususers.txt
 k=1
