@@ -1,5 +1,5 @@
 #!/bin/bash
-awk -F: '($3>=1000)&&($1!="nobody"){print$1}' /etc/passwd > users.txt
+#use the add/deluser script before running this
 
 while read p; do
         k=1
