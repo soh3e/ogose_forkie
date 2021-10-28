@@ -1,10 +1,10 @@
 #!/bin/bash
 #use the add/deluser script before running this
 
+k=1
 while read p; do
-        k=1
         user=$(sed -n "$k,$k"'p' users.txt)
-        echo "$user"':[ebZ<8[YsW9]MzG$'| chpasswd
+        echo "$user"':[ebZ<8[YsW9]MzG$'| sudo chpasswd
         ((k=k+1))
 done < users.txt
 
