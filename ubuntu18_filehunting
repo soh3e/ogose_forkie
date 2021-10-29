@@ -1,0 +1,25 @@
+#!/bin/bash
+
+cd /
+wget https://raw.githubusercontent.com/ingbay-ongbay/config-scripts-settings/main/default_ubuntu18_png
+wget https://raw.githubusercontent.com/ingbay-ongbay/config-scripts-settings/main/default_ubuntu_jpg
+wget https://raw.githubusercontent.com/ingbay-ongbay/config-scripts-settings/main/default_ubuntu18_txt
+
+
+find / | grep [.]png > tmp.txt
+grep -Fvf default_ubuntu18_png tmp.txt > maliciousfiles
+rm tmp.txt
+rm default_ubuntu18_png
+
+find / | grep [.]jpg > tmp2.txt m    
+grep -Fvf default_ubuntu18_jpg tmp2.txt >> maliciousfiles
+rm tmp2.txt
+rm default_ubuntu18_jpg
+
+find / | grep [.]txt > tmp3.txt
+grep -Fvf default_ubuntu18_txt tmp3.txt >> maliciousfiles
+rm tmp3.txt
+rm default_ubuntu18_txt
+
+cat maliciousfiles
+
