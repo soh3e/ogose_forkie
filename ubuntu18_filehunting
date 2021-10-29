@@ -2,7 +2,7 @@
 
 cd /
 wget https://raw.githubusercontent.com/ingbay-ongbay/config-scripts-settings/main/default_ubuntu18_png
-wget https://raw.githubusercontent.com/ingbay-ongbay/config-scripts-settings/main/default_ubuntu_jpg
+wget https://raw.githubusercontent.com/ingbay-ongbay/config-scripts-settings/main/default_ubuntu18_jpg
 wget https://raw.githubusercontent.com/ingbay-ongbay/config-scripts-settings/main/default_ubuntu18_txt
 
 
