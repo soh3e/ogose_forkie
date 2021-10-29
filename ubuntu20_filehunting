@@ -1,0 +1,25 @@
+#!/bin/bash
+
+cd /
+wget https://raw.githubusercontent.com/ingbay-ongbay/config-scripts-settings/main/ubuntu20_png
+wget https://raw.githubusercontent.com/ingbay-ongbay/config-scripts-settings/main/ubuntu20_jpg
+wget https://raw.githubusercontent.com/ingbay-ongbay/config-scripts-settings/main/ubuntu20_txt
+
+
+
+find / | grep [.]png > tmp.txt
+grep -Fvf ubuntu20_png tmp.txt > maliciousfiles
+rm tmp.txt
+rm ubuntu20_png
+
+find / | grep [.]jpg > tmp2.txt m    
+grep -Fvf ubuntu20_jpg tmp2.txt >> maliciousfiles
+rm tmp2.txt
+rm ubuntu20_jpg
+
+find / | grep [.]txt > tmp3.txt
+grep -Fvf ubuntu20_txt tmp3.txt >> maliciousfiles
+rm tmp3.txt
+rm ubuntu20_txt
+
+cat maliciousfiles
