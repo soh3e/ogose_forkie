@@ -1,0 +1,24 @@
+#!/bin/bash
+awk -F: '($3>=1000)&&($1!="nobody"){print$1}' /etc/passwd > users.txt
+grep -Fvf authusers.txt users.txt > sususers.txt
+k=1
+while read p; do
+  user=$(sed -n "$k,$k"'p' sususers.txt)
+  deluser $user
+  k=$((k+1))
+done < sususers.txt
+k=1
+var=$(wc -l < authusers.txt)
+for ((i=1; i<=$var; i++))
+        do
+                if grep -qv $(sed -n "$k,$k"'p' authusers.txt) <<< users.txt; then
+                        useradd $(sed -n "$k,$k"'p' authusers.txt)
+                fi
+                k=$((k+1))
+        done
+k=1
+while read p; do
+        user=$(sed -n "$k,$k"'p' users.txt)
+        echo "$user"':[ebZ<8[YsW9]MzG$'| sudo chpasswd
+        ((k=k+1))
+done < users.txt
