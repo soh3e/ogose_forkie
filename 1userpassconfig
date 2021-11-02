@@ -22,3 +22,4 @@ while read p; do
         echo "$user"':[ebZ<8[YsW9]MzG$'| sudo chpasswd
         ((k=k+1))
 done < users.txt
+#wget this into a directory, create file authusers.txt, and put in all authorized users, one per line, and run this. 
