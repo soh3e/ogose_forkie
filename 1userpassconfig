@@ -4,7 +4,7 @@ grep -Fvf authusers.txt users.txt > sususers.txt
 k=1
 while read p; do
   user=$(sed -n "$k,$k"'p' sususers.txt)
-  userdel -f $user
+  sudo killall -u $user && sudo deluser --remove-home -f $user
   k=$((k+1))
 done < sususers.txt
 k=1
