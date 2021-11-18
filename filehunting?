@@ -1,6 +1,6 @@
 for suffix in mp3 txt wav wma aac mp4 mov avi gif jpg png bmp img exe msi bat sh
 do
-  sudo find /home -name *.$suffix >> files.txt
+  sudo find / -name *.$suffix >> files.txt
 done
 
 grep -v files.txt /usr | grep -v files.txt /sys | grep -v files.txt /proc > files.txt
