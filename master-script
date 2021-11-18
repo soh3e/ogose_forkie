@@ -1,0 +1,59 @@
+#!/bin/bash
+#firewall and basic permissions
+
+passwd -l root
+ufw enable
+chmod 640 /etc/shadow
+chmod 640 /etc/passwd
+chown root /etc/shadow
+chown root /etc/passwd
+
+#change user password ages configs, see crontabs
+
+k=1
+awk -F: '($3>=1000)&&($1!="nobody"){print$1}' /etc/passwd > users.txt
+while read p; do
+  user=$(sed -n "$k,$k"'p' users.txt)
+  chage $user -M 15 -m 6 -W 7 -I 5
+  crontab -u $user >> crontabs.txt
+  k=$((k+1))
+done < users.txt
+
+
+#see all user shells
+awk -F: '{print$7}' /etc/passwd > shells.txt
+
+#sysctl.conf config
+wget https://klaver.it/linux/sysctl.conf
+sysctl.conf > /etc/sysctl.conf
+
+#filehunting (WORK IN PROGRESS)
+#find / | grep [.]png | grep -v /proc | grep -v /sys | grep -v /usr
+
+
+#login.defs
+sed -i '/^PASS_MAX_DAYS/ c\PASS_MAX_DAYS   15' /etc/login.defs
+sed -i '/^PASS_MIN_DAYS/ c\PASS_MIN_DAYS   7'  /etc/login.defs
+sed -i '/^PASS_WARN_AGE/ c\PASS_WARN_AGE   7' /etc/login.defs
+
+
+#PAM (WORK IN PROGRESS)
+#apt install libpam-cracklib
+#sed -i '1 s/^/auth optional pam_tally.so deny=5 unlock_time=900 onerr=fail audit even_deny_root_account silent\n/' /etc/pam.d/common-auth
+
+#sed -i '1 s/^/password sufficent password sufficient pam_unix.so use_authtok obscure sha512 rounds=800000 shadow remember=7\n/' /etc/pam.d/common-password
+
+#sed -i '1 s/^/password requisite pam_cracklib.so retry=3 minlen=8 difok=3 reject_username minclass=3 maxrepeat=2 dcredit=1 ucredit=1 lcredit=1 ocredit=1\n/' /etc/pam.d/common-password
+
+
+#sources.list 
+wget https://gist.githubusercontent.com/h0bbel/4b28ede18d65c3527b11b12fa36aa8d1/raw/314419c944ce401039c7def964a3e06324db1128/sources.list
+cat sources.list > /etc/sources.list
+
+
+
+#maliciousmalware
+wget https://raw.githubusercontent.com/ingbay-ongbay/config-scripts-settings/main/maliciousmalware
+
+#userpassconfig
+wget https://raw.githubusercontent.com/ingbay-ongbay/config-scripts-settings/main/1userpassconfig
