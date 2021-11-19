@@ -15,7 +15,7 @@ awk -F: '($3>=1000)&&($1!="nobody"){print$1}' /etc/passwd > users.txt
 while read p; do
   user=$(sed -n "$k,$k"'p' users.txt)
   chage $user -M 15 -m 6 -W 7 -I 5
-  crontab -u $user >> crontabs.txt
+  crontab -u $user -l >> crontabs.txt
   k=$((k+1))
 done < users.txt
 
