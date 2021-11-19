@@ -8,8 +8,9 @@ chmod 640 /etc/passwd
 chown root /etc/shadow
 chown root /etc/passwd
 
-#change user password ages configs, see crontabs
 
+
+#change user password ages configs, see crontabs
 k=1
 awk -F: '($3>=1000)&&($1!="nobody"){print$1}' /etc/passwd > users.txt
 while read p; do
@@ -18,6 +19,7 @@ while read p; do
   crontab -u $user -l >> crontabs.txt
   k=$((k+1))
 done < users.txt
+
 
 
 #see all user shells
