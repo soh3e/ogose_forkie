@@ -27,8 +27,6 @@ awk -F: '{print$7}' /etc/passwd > shells.txt
 wget https://klaver.it/linux/sysctl.conf
 sysctl.conf > /etc/sysctl.conf
 
-#filehunting (WORK IN PROGRESS)
-#find / | grep [.]png | grep -v /proc | grep -v /sys | grep -v /usr
 
 
 #login.defs
