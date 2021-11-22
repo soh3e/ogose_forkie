@@ -48,7 +48,7 @@ sed -i '/^PASS_WARN_AGE/ c\PASS_WARN_AGE   7' /etc/login.defs
 
 #sources.list 
 wget https://gist.githubusercontent.com/h0bbel/4b28ede18d65c3527b11b12fa36aa8d1/raw/314419c944ce401039c7def964a3e06324db1128/sources.list
-cat sources.list > /etc/sources.list
+cat sources.list > /etc/apt/sources.list
 
 
 
