@@ -1,4 +1,4 @@
-#
+# can you check if these configs are correct
 # /etc/pam.d/common-auth - authentication settings common to all services
 #
 # This file is included from other service-specific PAM config files,
