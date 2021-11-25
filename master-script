@@ -54,4 +54,4 @@ cat sources.list > /etc/apt/sources.list
 wget https://raw.githubusercontent.com/ingbay-ongbay/config-scripts-settings/main/maliciousmalware
 
 #userpassconfig
-wget https://raw.githubusercontent.com/ingbay-ongbay/config-scripts-settings/main/1userpassconfig
+wget https://raw.githubusercontent.com/ingbay-ongbay/config-scripts-settings/main/userpass
