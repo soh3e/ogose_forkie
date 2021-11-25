@@ -1,6 +1,8 @@
 #!/bin/bash
-#firewall and basic permissions
+#UBUNTU 18
 #sudo su before 
+#firewall and basic permissions
+
 
 passwd -l root
 ufw enable
@@ -8,7 +10,9 @@ chmod 640 /etc/shadow
 chmod 644 /etc/passwd
 chown root /etc/shadow
 chown root /etc/passwd
-
+#sets the text editor to nano and uses the alias "edit" (use: edit [file])
+export EDITOR=nano
+alias edit="sudoedit"
 
 #sources.list 
 wget https://gist.githubusercontent.com/h0bbel/4b28ede18d65c3527b11b12fa36aa8d1/raw/314419c944ce401039c7def964a3e06324db1128/sources.list
