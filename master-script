@@ -38,13 +38,11 @@ sed -i '/^PASS_WARN_AGE/ c\PASS_WARN_AGE   7' /etc/login.defs
 
 
 #PAM (WORK IN PROGRESS)
-#apt install libpam-cracklib
-#sed -i '1 s/^/auth optional pam_tally.so deny=5 unlock_time=900 onerr=fail audit even_deny_root_account silent\n/' /etc/pam.d/common-auth
-
-#sed -i '1 s/^/password sufficent password sufficient pam_unix.so use_authtok obscure sha512 rounds=800000 shadow remember=7\n/' /etc/pam.d/common-password
-
-#sed -i '1 s/^/password requisite pam_cracklib.so retry=3 minlen=8 difok=3 reject_username minclass=3 maxrepeat=2 dcredit=1 ucredit=1 lcredit=1 ocredit=1\n/' /etc/pam.d/common-password
-
+apt install libpam-cracklib
+wget https://raw.githubusercontent.com/ingbay-ongbay/config-scripts-settings/main/common-auth
+cat common-auth > /etc/pam.d/common-auth
+wget https://raw.githubusercontent.com/ingbay-ongbay/config-scripts-settings/main/common-password
+cat common-password > /etc/pam.d/common-password
 
 #sources.list 
 wget https://gist.githubusercontent.com/h0bbel/4b28ede18d65c3527b11b12fa36aa8d1/raw/314419c944ce401039c7def964a3e06324db1128/sources.list
