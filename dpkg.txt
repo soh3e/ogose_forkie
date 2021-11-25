@@ -1549,10 +1549,6 @@ ii  usbmuxd                                    1.1.0-2ubuntu0.1                 
 ii  usbutils                                   1:007-4build1                                   amd64        Linux USB utilities
 ii  util-linux                                 2.31.1-0.4ubuntu3.7                             amd64        miscellaneous system utilities
 ii  uuid-runtime                               2.31.1-0.4ubuntu3.7                             amd64        runtime components for the Universally Unique ID library
-ii  vim                                        2:8.0.1453-1ubuntu1.7                           amd64        Vi IMproved - enhanced vi editor
-ii  vim-common                                 2:8.0.1453-1ubuntu1.7                           all          Vi IMproved - Common files
-ii  vim-runtime                                2:8.0.1453-1ubuntu1.7                           all          Vi IMproved - Runtime files
-ii  vim-tiny                                   2:8.0.1453-1ubuntu1.7                           amd64        Vi IMproved - enhanced vi editor - compact version
 ii  vino                                       3.22.0-3ubuntu1.2                               amd64        VNC server for GNOME
 ii  wamerican                                  2017.08.24-1                                    all          American English dictionary words for /usr/share/dict
 ii  wbritish                                   2017.08.24-1                                    all          British English dictionary words for /usr/share/dict
