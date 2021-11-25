@@ -1,5 +1,6 @@
 #!/bin/bash
 #firewall and basic permissions
+#sudo su before 
 
 passwd -l root
 ufw enable
@@ -9,6 +10,9 @@ chown root /etc/shadow
 chown root /etc/passwd
 
 
+#sources.list 
+wget https://gist.githubusercontent.com/h0bbel/4b28ede18d65c3527b11b12fa36aa8d1/raw/314419c944ce401039c7def964a3e06324db1128/sources.list
+cat sources.list > /etc/apt/sources.list
 
 #change user password ages configs, see crontabs
 k=1
@@ -43,11 +47,6 @@ wget https://raw.githubusercontent.com/ingbay-ongbay/config-scripts-settings/mai
 cat common-auth > /etc/pam.d/common-auth
 wget https://raw.githubusercontent.com/ingbay-ongbay/config-scripts-settings/main/common-password
 cat common-password > /etc/pam.d/common-password
-
-#sources.list 
-wget https://gist.githubusercontent.com/h0bbel/4b28ede18d65c3527b11b12fa36aa8d1/raw/314419c944ce401039c7def964a3e06324db1128/sources.list
-cat sources.list > /etc/apt/sources.list
-
 
 
 #maliciousmalware
