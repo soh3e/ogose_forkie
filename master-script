@@ -4,7 +4,7 @@
 passwd -l root
 ufw enable
 chmod 640 /etc/shadow
-chmod 640 /etc/passwd
+chmod 644 /etc/passwd
 chown root /etc/shadow
 chown root /etc/passwd
 
