@@ -47,20 +47,20 @@ sed -i '/^PASS_WARN_AGE/ c\PASS_WARN_AGE   7' /etc/login.defs
 
 #PAM 
 apt install libpam-cracklib
-wget https://raw.githubusercontent.com/ingbay-ongbay/config-scripts-settings/main/common-auth
+wget https://raw.githubusercontent.com/ingbay-ongbay/ogose/main/common-auth
 cat common-auth > /etc/pam.d/common-auth
-wget https://raw.githubusercontent.com/ingbay-ongbay/config-scripts-settings/main/common-password
+wget https://raw.githubusercontent.com/ingbay-ongbay/ogose/main/common-password
 cat common-password > /etc/pam.d/common-password
 
 #package finder
 #note: there may be some non-suspicious packages that are attached to suspicious ones (such as many hacking tools using python)
-wget https://raw.githubusercontent.com/ingbay-ongbay/config-scripts-settings/main/dpkg
+wget https://raw.githubusercontent.com/ingbay-ongbay/ogose/main/dpkg
 dpkg -l > dpkg.txt
 grep -Fvf dpkg dpkg.txt > suspackages.txt
 
 
 #maliciousmalware
-wget https://raw.githubusercontent.com/ingbay-ongbay/config-scripts-settings/main/maliciousmalware
+wget https://raw.githubusercontent.com/ingbay-ongbay/ogose/main/maliciousmalware
 
 #userpassconfig
-wget https://raw.githubusercontent.com/ingbay-ongbay/config-scripts-settings/main/userpass
+wget https://raw.githubusercontent.com/ingbay-ongbay/ogose/main/userpass
