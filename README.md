@@ -1,2 +1,2 @@
-# config-scripts-settings
+# ogose
 cyberpatriot omegalul
