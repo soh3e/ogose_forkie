@@ -1,28 +1,20 @@
 #!/bin/bash
 awk -F: '($3>=1000)&&($1!="nobody"){print$1}' /etc/passwd > users.txt
 grep -Fvf authusers.txt users.txt > sususers.txt
-k=1
-sususer=$(wc -l < sususers.txt)
-for ((a=1; a<=$sususer; a++))
+var1=$(wc -l < sususers.txt)
+for ((a=1; a<=$var1; a++))
         do
-                if grep $(sed -n "$k,$k"'p' sususers.txt) <<< users.txt; then
-                        sudo userdel -r $(sed -n "$k, $k"'p' sususers.txt)
+                if grep -q $(sed -n "$a,$a"'p' sususers.txt) users.txt; then
+                        sudo killall -u $(sed -n "$a,$a"'p' sususers.txt) && sudo userdel -r $(sed -n "$a, $a"'p' sususers.txt)
                 fi
-                k=$((k+1))
+
         done
-k=1
 var=$(wc -l < authusers.txt)
 for ((i=1; i<=$var; i++))
         do
-                if grep -qv $(sed -n "$k,$k"'p' authusers.txt) <<< users.txt; then
-                        useradd $(sed -n "$k,$k"'p' authusers.txt)
+                if grep -qv $(sed -n "$i,$i"'p' authusers.txt) <<< users.txt; then
+                        useradd $(sed -n "$i,$i"'p' authusers.txt)
                 fi
-                k=$((k+1))
+                echo $(sed -n "$i,$i"'p' authusers.txt) ':[ebZ<8[YsW9]MzG$'| sudo chpasswd
         done
-k=1
-while read p; do
-        user=$(sed -n "$k,$k"'p' users.txt)
-        echo "$user"':[ebZ<8[YsW9]MzG$'| sudo chpasswd
-        ((k=k+1))
-done < users.txt
 #wget this into a directory, create file authusers.txt, and put in all authorized users, one per line, and run this. 
