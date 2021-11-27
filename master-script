@@ -1,9 +1,9 @@
 #!/bin/bash
 #UBUNTU 18
 #sudo su before 
+
+
 #firewall and basic permissions
-
-
 passwd -l root
 ufw enable
 chmod 640 /etc/shadow
