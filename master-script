@@ -10,7 +10,8 @@ chmod 640 /etc/shadow
 chmod 644 /etc/passwd
 chown root /etc/shadow
 chown root /etc/passwd
-#sets the text editor to nano and uses the alias "edit" (use: edit [file])
+
+#aliases
 export EDITOR=nano
 alias edit="sudoedit"
 alias ls -la="ls -ltah"
