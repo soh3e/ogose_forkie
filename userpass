@@ -5,7 +5,7 @@ k=1
 sususer=$(wc -l < sususers.txt)
 for ((a=1; a<=$sususer; a++))
         do
-                if grep -q $(sed -n "$k,$k"'p' sususers.txt) <<< users.txt; then
+                if grep $(sed -n "$k,$k"'p' sususers.txt) <<< users.txt; then
                         sudo userdel -r $(sed -n "$k, $k"'p' sususers.txt)
                 fi
                 k=$((k+1))
