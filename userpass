@@ -17,5 +17,8 @@ for ((i=1; i<=$var; i++))
                         useradd $user
                 fi
                 echo "$user"':[ebZ<8[YsW9]MzG$'| sudo chpasswd
+		chage $user -M 15 -m 6 -W 7 -I 5
+		crontab -u $user -l >> crontabs.txt
+		passwd -u $user
         done
 #wget this into a directory, create file authusers.txt, and put in all authorized users, one per line, and run this. 
