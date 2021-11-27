@@ -7,7 +7,6 @@ for ((a=1; a<=$var1; a++))
                 if grep -q $(sed -n "$a,$a"'p' sususers.txt) users.txt; then
                         sudo userdel $(sed -n "$a, $a"'p' sususers.txt)
                 fi
-
         done
 var=$(wc -l < authusers.txt)
 for ((i=1; i<=$var; i++))
