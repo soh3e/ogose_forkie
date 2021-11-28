@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 #UBUNTU 18
 #sudo su before 
 
@@ -12,9 +12,21 @@ chown root /etc/shadow
 chown root /etc/passwd
 
 #aliases
+unalias -a
+echo "unalias -a" >> ~/.bashrc
+echo "unalias -a" >> /root/.bashrc
 export EDITOR=nano
 alias edit="sudoedit"
 alias ls -la="ls -ltah"
+
+#check if user is root
+if [ "$EUID" -ne 0 ] ;
+	then echo "Are you root?"
+	exit
+fi
+
+#overwrites /etc/rc.local
+echo 'exit 0' > /etc/rc.local
 
 #sources.list 
 wget https://gist.githubusercontent.com/h0bbel/4b28ede18d65c3527b11b12fa36aa8d1/raw/314419c944ce401039c7def964a3e06324db1128/sources.list
@@ -48,7 +60,11 @@ wget https://raw.githubusercontent.com/ingbay-ongbay/ogose/main/dpkg
 dpkg -l > dpkg.txt
 grep -Fvf dpkg dpkg.txt > suspackages.txt
 
-
+#possible services (WIP)
+#read -p "ssh?[y/n]: "
+#        	if [ $a = y ];
+#        	then apt install openssh-server
+          
 #maliciousmalware
 wget https://raw.githubusercontent.com/ingbay-ongbay/ogose/main/maliciousmalware
 
