@@ -37,7 +37,7 @@ awk -F: '{print$7}' /etc/passwd > shells.txt
 #sysctl.conf config
 wget https://klaver.it/linux/sysctl.conf
 cat sysctl.conf > /etc/sysctl.conf
-
+cp /etc/sysctl.conf /etc/sysctl.bak 
 
 
 #login.defs
