@@ -70,3 +70,12 @@ wget https://raw.githubusercontent.com/ingbay-ongbay/ogose/main/maliciousmalware
 
 #userpassconfig
 wget https://raw.githubusercontent.com/ingbay-ongbay/ogose/main/userpass
+
+#updating all packages/bash/kernel
+apt update -y
+apt upgrade -y
+apt dist-upgrade -y
+apt install --only-upgrade-bash
+apt autoremove -y
+apt autoclean -y
+apt install --only-install-bash
