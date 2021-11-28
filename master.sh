@@ -77,4 +77,3 @@ apt dist-upgrade -y
 apt install --only-upgrade-bash
 apt autoremove -y
 apt autoclean -y
-apt install --only-install-bash
