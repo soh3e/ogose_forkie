@@ -2,6 +2,11 @@
 #UBUNTU 18
 #sudo su before 
 
+#check if user is root
+if [ "$EUID" -ne 0 ] ;
+	then echo "Are you root?"
+	exit
+fi
 
 #firewall and basic permissions
 passwd -l root
@@ -18,12 +23,6 @@ echo "unalias -a" >> /root/.bashrc
 export EDITOR=nano
 alias edit="sudoedit"
 alias ls -la="ls -ltah"
-
-#check if user is root
-if [ "$EUID" -ne 0 ] ;
-	then echo "Are you root?"
-	exit
-fi
 
 #overwrites /etc/rc.local
 echo 'exit 0' > /etc/rc.local
