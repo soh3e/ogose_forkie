@@ -18,11 +18,10 @@ chown root /etc/passwd
 
 #aliases
 unalias -a
-echo "unalias -a" >> ~/.bashrc
-echo "unalias -a" >> /root/.bashrc
 export EDITOR=nano
 alias edit="sudoedit"
 alias ls -la="ls -ltah"
+echo $PATH
 
 #overwrites /etc/rc.local
 echo 'exit 0' > /etc/rc.local
