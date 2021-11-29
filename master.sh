@@ -16,7 +16,7 @@ chmod 644 /etc/passwd
 chown root /etc/shadow
 chown root /etc/passwd
 
-#aliases (most are broken rn)
+#aliases
 unalias -a
 export EDITOR=nano
 alias nano="sudoedit"
