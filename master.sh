@@ -63,10 +63,6 @@ wget https://raw.githubusercontent.com/ingbay-ongbay/ogose/main/dpkg
 dpkg -l > dpkg.txt
 grep -Fvf dpkg dpkg.txt > suspackages.txt
 
-#possible services (WIP)
-#read -p "ssh?[y/n]: "
-#        	if [ $a = y ];
-#        	then apt install openssh-server
           
 #maliciousmalware
 wget https://raw.githubusercontent.com/ingbay-ongbay/ogose/main/maliciousmalware
