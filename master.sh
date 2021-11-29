@@ -16,11 +16,11 @@ chmod 644 /etc/passwd
 chown root /etc/shadow
 chown root /etc/passwd
 
-#aliases
+#aliases (most are broken rn)
 unalias -a
 export EDITOR=nano
-alias edit="sudoedit"
-alias ls -la="ls -ltah"
+#alias edit="sudoedit"
+#alias ls -la="ls -ltah"
 echo $PATH
 
 #overwrites /etc/rc.local
