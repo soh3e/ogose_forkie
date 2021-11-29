@@ -20,7 +20,7 @@ chown root /etc/passwd
 unalias -a
 export EDITOR=nano
 alias nano="sudoedit"
-alias ls="ls -ltah"
+alias ll="ls -ltah"
 echo $PATH
 
 #overwrites /etc/rc.local
