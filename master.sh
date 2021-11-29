@@ -55,7 +55,7 @@ cat common-password > /etc/pam.d/common-password
 
 #adduser.conf config
 wget https://raw.githubusercontent.com/ingbay-ongbay/ogose/main/adduser.conf
-adduser.conf > /etc/adduser.conf
+cat adduser.conf > /etc/adduser.conf
 
 #package finder
 #note: there may be some non-suspicious packages that are attached to suspicious ones (such as many hacking tools using python)
