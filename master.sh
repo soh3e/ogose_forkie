@@ -78,6 +78,6 @@ wget https://raw.githubusercontent.com/ingbay-ongbay/ogose/main/userpass
 apt update -y
 apt upgrade -y
 apt dist-upgrade -y
-apt install --only-upgrade-bash
+apt install --only-upgrade-bash -y
 apt autoremove -y
 apt autoclean -y
