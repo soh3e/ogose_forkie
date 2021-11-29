@@ -19,8 +19,8 @@ chown root /etc/passwd
 #aliases (most are broken rn)
 unalias -a
 export EDITOR=nano
-#alias edit="sudoedit"
-#alias ls -la="ls -ltah"
+alias nano="sudoedit"
+alias ls="ls -ltah"
 echo $PATH
 
 #overwrites /etc/rc.local
