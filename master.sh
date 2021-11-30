@@ -13,13 +13,14 @@ passwd -l root
 ufw enable
 chmod 640 /etc/shadow
 chmod 644 /etc/passwd
+chmod 644 /etc/group
 chown root /etc/shadow
 chown root /etc/passwd
+chown root /etc/group
 
 #aliases
 unalias -a
 export EDITOR=nano
-alias nano="sudoedit"
 alias ll="ls -ltah"
 echo $PATH
 
