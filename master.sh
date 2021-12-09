@@ -27,6 +27,9 @@ echo $PATH
 #overwrites /etc/rc.local
 echo 'exit 0' > /etc/rc.local
 
+#overwrites /etc/host.conf
+echo -e 'order hosts,bind \n multi on \n nospoof on' > /etc/host.conf
+
 #sources.list 
 wget https://gist.githubusercontent.com/h0bbel/4b28ede18d65c3527b11b12fa36aa8d1/raw/314419c944ce401039c7def964a3e06324db1128/sources.list
 cat sources.list > /etc/apt/sources.list
@@ -38,6 +41,7 @@ awk -F: '{print$7}' /etc/passwd > shells.txt
 wget https://klaver.it/linux/sysctl.conf
 cat sysctl.conf > /etc/sysctl.conf
 cp /etc/sysctl.conf /etc/sysctl.bak 
+sysctl -ep
 
 
 #login.defs
