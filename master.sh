@@ -61,11 +61,11 @@ cat common-password > /etc/pam.d/common-password
 wget https://raw.githubusercontent.com/ingbay-ongbay/ogose/main/adduser.conf
 cat adduser.conf > /etc/adduser.conf
 
-#package finder
+#package finder (BROKEN)
 #note: there may be some non-suspicious packages that are attached to suspicious ones (such as many hacking tools using python)
-wget https://raw.githubusercontent.com/ingbay-ongbay/ogose/main/dpkg
-dpkg -l > dpkg.txt
-grep -Fvf dpkg dpkg.txt > suspackages.txt
+#wget https://raw.githubusercontent.com/ingbay-ongbay/ogose/main/dpkg
+#dpkg -l > dpkg.txt
+#grep -Fvf dpkg dpkg.txt > suspackages.txt
 
           
 #maliciousmalware
@@ -76,8 +76,6 @@ wget https://raw.githubusercontent.com/ingbay-ongbay/ogose/main/userpass
 
 #updating all packages/bash/kernel
 apt update -y
-apt upgrade -y
-apt dist-upgrade -y
 apt install --only-upgrade bash -y
 apt autoremove -y
 apt autoclean -y
