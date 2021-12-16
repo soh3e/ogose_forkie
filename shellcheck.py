@@ -1,10 +1,10 @@
 import pwd, sys
 
-user_arr = []
+user_list = []
 with open('authusers.txt') as my_file:
-    user_arr=my_file.read().splitlines()
+    user_list=my_file.read().splitlines()
 
-for i in range(len(user_arr)):
-    user_arr[i] = user_arr[i].strip()
-    user_arr[i] = pwd.getpwnam(user_arr[i])
-    print((user_arr[i].pw_name + ": " + user_arr[i].pw_shell))
+for i in user_list:
+    i = i.strip()
+    i = pwd.getpwnam(i)
+    print((i.pw_name + ": " + i.pw_shell))
