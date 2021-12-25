@@ -9,8 +9,10 @@ aptitude search '~i!~M' -F'%p' > pack.txt
 while read p; do
 	grep -q $p defpack.txt
 	if [[ "$?" -eq 1 ]]; then
-		echo "$p" >> suspackages.txt	
+		echo $p >> suspackages.txt	
 	else 
 		echo "$p passed vibe check"
 	fi
 done < pack.txt	
+rm pack.txt
+rm defpack.txt
