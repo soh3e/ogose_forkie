@@ -3,4 +3,4 @@ do
   sudo find / -name *.$suffix >> files.txt
 done
 
-grep -v files.txt /usr | grep -v files.txt /sys | grep -v files.txt /proc | grep  -v files.txt /var
+
