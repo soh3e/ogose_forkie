@@ -70,11 +70,19 @@ cat common-password > /etc/pam.d/common-password
 wget https://raw.githubusercontent.com/ingbay-ongbay/ogose/main/adduser.conf
 cat adduser.conf > /etc/adduser.conf
 
-#package finder (BROKEN)
-#note: there may be some non-suspicious packages that are attached to suspicious ones (such as many hacking tools using python)
-#wget https://raw.githubusercontent.com/ingbay-ongbay/ogose/main/dpkg
-#dpkg -l > dpkg.txt
-#grep -Fvf dpkg dpkg.txt > suspackages.txt
+#package finder
+apt-mark showmanual > pack.txt
+(wget http://releases.ubuntu.com/bionic/ubuntu-18.04.6-desktop-amd64.manifest \
+-q -O - | cut -f 1) > defpack.txt
+# https://releases.ubuntu.com/20.04.3/ubuntu-20.04.3-desktop-amd64.manifest is for ubuntu 20
+while read p; do
+	grep -q $p defpack.txt
+	if [[ "$?" -eq 1 ]]; then
+		echo $p >> suspackages.txt
+	fi
+done < pack.txt	
+rm pack.txt
+rm defpack.txt
 
           
 #maliciousmalware
