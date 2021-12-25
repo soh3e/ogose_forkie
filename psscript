@@ -1,0 +1,14 @@
+#!/bin/bash
+#THIS IS UBUNTU 18!!!!! PLS CONVERT IF USING FOR DIFFERENT DISTRO/RELEASE
+apt -qq install aptitude
+aptitude search '~i!~M' -F'%p' > pack.txt
+(wget http://releases.ubuntu.com/bionic/ubuntu-18.04.6-desktop-amd64.manifest \
+-q -O - | cut -f 1) > defpack.txt
+while read p; do
+	grep -q $p defpack.txt
+	if [[ "$?" -eq 1 ]]; then
+		echo "$p" >> suspackages.txt	
+	else 
+		echo "$p passed vibe check"
+	fi
+done < pack.txt	
