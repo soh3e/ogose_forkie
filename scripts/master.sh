@@ -41,6 +41,7 @@ echo -e 'order hosts,bind \nmulti on \nnospoof on' > /etc/host.conf
 #sources.list 
 wget https://gist.githubusercontent.com/h0bbel/4b28ede18d65c3527b11b12fa36aa8d1/raw/314419c944ce401039c7def964a3e06324db1128/sources.list
 cat sources.list > /etc/apt/sources.list
+rm sources.list
 
 #see all user shells
 awk -F: '{print$7}' /etc/passwd > shells.txt
@@ -50,7 +51,7 @@ wget https://klaver.it/linux/sysctl.conf
 cat sysctl.conf > /etc/sysctl.conf
 cp /etc/sysctl.conf /etc/sysctl.bak 
 sysctl -ep
-
+rm sysctl.conf
 
 #login.defs
 sed -i '/^PASS_MAX_DAYS/ c\PASS_MAX_DAYS   15' /etc/login.defs
@@ -60,14 +61,17 @@ sed -i '/^PASS_WARN_AGE/ c\PASS_WARN_AGE   7' /etc/login.defs
 
 #PAM 
 apt install libpam-cracklib
-wget https://raw.githubusercontent.com/ingbay-ongbay/ogose/main/common-auth
+wget https://raw.githubusercontent.com/ingbay-ongbay/ogose/main/default/common-auth
 cat common-auth > /etc/pam.d/common-auth
-wget https://raw.githubusercontent.com/ingbay-ongbay/ogose/main/common-password
+wget https://raw.githubusercontent.com/ingbay-ongbay/ogose/main/default/common-password
 cat common-password > /etc/pam.d/common-password
+rm common-auth
+rm common-password
 
 #adduser.conf config
-wget https://raw.githubusercontent.com/ingbay-ongbay/ogose/main/adduser.conf
+wget https://raw.githubusercontent.com/ingbay-ongbay/ogose/main/default/adduser.conf
 cat adduser.conf > /etc/adduser.conf
+rm adduser.conf
 
 #package finder
 apt-mark showmanual > pack.txt
@@ -85,12 +89,12 @@ rm defpack.txt
 
           
 #maliciousmalware
-wget https://raw.githubusercontent.com/ingbay-ongbay/ogose/main/maliciousmalware
+wget https://raw.githubusercontent.com/ingbay-ongbay/ogose/main/scripts/maliciousmalware
 
 #userpassconfig
-wget https://raw.githubusercontent.com/ingbay-ongbay/ogose/main/userpass
+wget https://raw.githubusercontent.com/ingbay-ongbay/ogose/main/scripts/userpass
 
-#updating all packages/bash/kernel
+#update only stuff needed for apt (no upgrades)
 apt update -y
 apt install --only-upgrade bash -y
 apt autoremove -y
