@@ -1,2 +1,0 @@
-# ogose
-cyberpatriot omegalul
