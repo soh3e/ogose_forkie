@@ -76,7 +76,7 @@ rm adduser.conf
 
 #package finder
 apt-mark showmanual > pack.txt
-(https://raw.githubusercontent.com/ingbay-ongbay/ogose/debian/default/debpack \
+(wget https://raw.githubusercontent.com/ingbay-ongbay/ogose/debian/default/debpack \
 -q -O - | cut -f 1) > defpack.txt
 # https://releases.ubuntu.com/20.04.3/ubuntu-20.04.3-desktop-amd64.manifest is for ubuntu 20
 while read p; do
