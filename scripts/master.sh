@@ -1,5 +1,5 @@
-#!/bin/sh
-#UBUNTU 18
+#!/bin/bash
+#Debian 10
 
 #check if user is root
 if [ "$EUID" -ne 0 ] ;
