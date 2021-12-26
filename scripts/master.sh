@@ -16,14 +16,14 @@ chmod 644 /etc/group
 chown root /etc/shadow
 chown root /etc/passwd
 chown root /etc/group
-chmod u-s /bin/bash
-chmod g-s /bin/bash
-chmod u-s /bin/dash
-chmod g-s /bin/dash
-chmod 755 /bin/bash
-chmod 755 /bin/dash
-chown root /bin/dash
-chown root /bin/bash
+chgrp root /etc/shadow
+chgrp root /etc/passwd
+chgrp root /etc/group
+chmod u-s /bin/*
+chmod g-s /bin/*
+chmod 755 /bin/*
+chown root /bin/*
+chgrp root /bin/*
 
 #sources.list 
 wget https://raw.githubusercontent.com/ingbay-ongbay/ogose/debian/default/sources.list
