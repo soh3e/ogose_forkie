@@ -39,7 +39,7 @@ echo 'exit 0' > /etc/rc.local
 echo -e 'order hosts,bind \nmulti on \nnospoof on' > /etc/host.conf
 
 #sources.list 
-wget https://gist.githubusercontent.com/h0bbel/4b28ede18d65c3527b11b12fa36aa8d1/raw/314419c944ce401039c7def964a3e06324db1128/sources.list
+wget https://gist.githubusercontent.com/ishad0w/788555191c7037e249a439542c53e170/raw/3822ba49241e6fd851ca1c1cbcc4d7e87382f484/sources.list
 cat sources.list > /etc/apt/sources.list
 rm sources.list
 
@@ -75,9 +75,8 @@ rm adduser.conf
 
 #package finder
 apt-mark showmanual > pack.txt
-(wget http://releases.ubuntu.com/bionic/ubuntu-18.04.6-desktop-amd64.manifest \
+(wget https://releases.ubuntu.com/20.04.3/ubuntu-20.04.3-desktop-amd64.manifest \
 -q -O - | cut -f 1) > defpack.txt
-# https://releases.ubuntu.com/20.04.3/ubuntu-20.04.3-desktop-amd64.manifest is for ubuntu 20
 while read p; do
 	grep -q $p defpack.txt
 	if [[ "$?" -eq 1 ]]; then
