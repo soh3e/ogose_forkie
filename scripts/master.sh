@@ -25,10 +25,15 @@ chmod 755 /bin/dash
 chown root /bin/dash
 chown root /bin/bash
 
+#sources.list 
+wget https://raw.githubusercontent.com/ingbay-ongbay/ogose/debian/default/sources.list
+cat sources.list > /etc/apt/sources.list
+rm sources.list
 
 #aliases
+apt install vim -y
 unalias -a
-export EDITOR=nano
+export EDITOR=vim
 alias ll="ls -ltah"
 echo $PATH
 
@@ -38,10 +43,6 @@ echo 'exit 0' > /etc/rc.local
 #overwrites /etc/host.conf
 echo -e 'order hosts,bind \nmulti on \nnospoof on' > /etc/host.conf
 
-#sources.list 
-wget https://gist.githubusercontent.com/h0bbel/4b28ede18d65c3527b11b12fa36aa8d1/raw/314419c944ce401039c7def964a3e06324db1128/sources.list
-cat sources.list > /etc/apt/sources.list
-rm sources.list
 
 #see all user shells
 awk -F: '{print$7}' /etc/passwd > shells.txt
@@ -75,7 +76,7 @@ rm adduser.conf
 
 #package finder
 apt-mark showmanual > pack.txt
-(wget http://releases.ubuntu.com/bionic/ubuntu-18.04.6-desktop-amd64.manifest \
+(https://raw.githubusercontent.com/ingbay-ongbay/ogose/debian/default/debpack \
 -q -O - | cut -f 1) > defpack.txt
 # https://releases.ubuntu.com/20.04.3/ubuntu-20.04.3-desktop-amd64.manifest is for ubuntu 20
 while read p; do
