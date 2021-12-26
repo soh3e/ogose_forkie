@@ -1,5 +1,5 @@
 #!/bin/sh
-#UBUNTU 18
+#UBUNTU 20
 
 #check if user is root
 if [ "$EUID" -ne 0 ] ;
@@ -39,7 +39,7 @@ echo 'exit 0' > /etc/rc.local
 echo -e 'order hosts,bind \nmulti on \nnospoof on' > /etc/host.conf
 
 #sources.list 
-wget https://gist.githubusercontent.com/ishad0w/788555191c7037e249a439542c53e170/raw/3822ba49241e6fd851ca1c1cbcc4d7e87382f484/sources.list
+wget https://raw.githubusercontent.com/ingbay-ongbay/ogose/ubu20/default/sources.list
 cat sources.list > /etc/apt/sources.list
 rm sources.list
 
