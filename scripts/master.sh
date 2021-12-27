@@ -25,6 +25,7 @@ chmod 755 /bin/dash
 chown root /bin/dash
 chown root /bin/bash
 chgrp adm /var/log/syslog
+chmod 0750 /var/log
 
 
 #aliases
