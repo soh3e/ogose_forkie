@@ -29,6 +29,7 @@ chgrp root /bin/*
 wget https://raw.githubusercontent.com/ingbay-ongbay/ogose/debian/default/sources.list
 cat sources.list > /etc/apt/sources.list
 rm sources.list
+apt update -y
 
 #aliases
 apt install vim -y
@@ -96,7 +97,6 @@ wget https://raw.githubusercontent.com/ingbay-ongbay/ogose/main/scripts/maliciou
 wget https://raw.githubusercontent.com/ingbay-ongbay/ogose/main/scripts/userpass
 
 #update only stuff needed for apt (no upgrades)
-apt update -y
 apt install --only-upgrade bash -y
 apt autoremove -y
 apt autoclean -y
