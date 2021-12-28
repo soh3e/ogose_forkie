@@ -44,6 +44,7 @@ echo -e 'order hosts,bind \nmulti on \nnospoof on' > /etc/host.conf
 wget https://gist.githubusercontent.com/h0bbel/4b28ede18d65c3527b11b12fa36aa8d1/raw/314419c944ce401039c7def964a3e06324db1128/sources.list
 cat sources.list > /etc/apt/sources.list
 rm sources.list
+apt update -y
 
 #see all user shells
 awk -F: '{print$7}' /etc/passwd > shells.txt
@@ -97,7 +98,6 @@ wget https://raw.githubusercontent.com/ingbay-ongbay/ogose/main/scripts/maliciou
 wget https://raw.githubusercontent.com/ingbay-ongbay/ogose/main/scripts/userpass
 
 #update only stuff needed for apt (no upgrades)
-apt update -y
 apt install --only-upgrade bash -y
 apt autoremove -y
 apt autoclean -y
