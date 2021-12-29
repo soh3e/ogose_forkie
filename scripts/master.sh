@@ -91,12 +91,43 @@ done < pack.txt
 rm pack.txt
 rm defpack.txt
 
-          
+
+#adduser
+echo "root" >> authusers.txt
+name=""
+while [[ $name != "done" ]]; do
+	read -p "Name of authorized user: " name
+	if [[ $name == "done" ]]; then
+		echo "done"
+	else
+		echo $name >> authusers.txt
+	fi
+done
+awk -F: '($3>=1000)&&($1!="nobody")&&($3=0){print$1}' /etc/passwd > users.txt
+while read i; do
+        grep -q $i users.txt
+        if [[ "$?" -eq 1 ]];then
+                useradd "$i"
+        fi
+done < authusers.txt
+
+while read p; do
+        echo "$p"':[ebZ<8[YsW9]MzG$'| sudo chpasswd
+        chage $p -M 15 -m 6 -W 7 -I 5
+        crontab -u $p -l >> crontabs.txt
+        passwd -u $p
+        grep -q $p authusers.txt
+        if [[ "$?" -eq 1 ]]; then
+                killall -u $p
+                userdel $p
+        fi
+done < users.txt
+
+
 #maliciousmalware
 wget https://raw.githubusercontent.com/ingbay-ongbay/ogose/main/scripts/maliciousmalware
 
-#userpassconfig
-wget https://raw.githubusercontent.com/ingbay-ongbay/ogose/main/scripts/userpass
+
 
 #update only stuff needed for apt (no upgrades)
 apt install --only-upgrade bash -y
