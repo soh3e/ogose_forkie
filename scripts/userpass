@@ -1,24 +1,20 @@
 #!/bin/bash
 awk -F: '($3>=1000)&&($1!="nobody"){print$1}' /etc/passwd > users.txt
-grep -Fvf authusers.txt users.txt > sususers.txt
-var1=$(wc -l < sususers.txt)
-for ((a=1; a<=$var1; a++))
-        do
-                if grep -q $(sed -n "$a,$a"'p' sususers.txt) users.txt; then
-			sudo killall -u $(sed -n "$a,$a"'p' sususers.txt)
-            		userdel $(sed -n "$a, $a"'p' sususers.txt)
-                fi
-        done
-var=$(wc -l < authusers.txt)
-for ((i=1; i<=$var; i++))
-        do
-		user=$(sed -n "$i,$i"'p' authusers.txt)
-                if grep -qv $user <<< users.txt; then
-                        useradd $user
-                fi
-                echo "$user"':[ebZ<8[YsW9]MzG$'| sudo chpasswd
-		chage $user -M 15 -m 6 -W 7 -I 5
-		crontab -u $user -l >> crontabs.txt
-		passwd -u $user
-        done
-#wget this into a directory, create file authusers.txt, and put in all authorized users, one per line, and run this. 
+while read i; do
+        grep -q$i users.txt
+        if [[ "$?" -eq 1 ]];then
+                useradd "$i"
+        fi
+done < authusers.txt
+
+while read p; do
+        echo "$p"':[ebZ<8[YsW9]MzG$'| sudo chpasswd
+        chage $p -M 15 -m 6 -W 7 -I 5
+        crontab -u $p -l >> crontabs.txt
+        passwd -u $p
+        grep -q $p authusers.txt
+        if [[ "$?" -eq 1 ]]; then
+                killall -u $p
+                userdel $p
+        fi
+done < users.txt
