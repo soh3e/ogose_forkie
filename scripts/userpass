@@ -1,4 +1,5 @@
 #!/bin/bash
+echo "root" >> authusers.txt
 name=""
 while [[ $name != "done" ]]; do
 	read -p "Name of authorized user: " name
@@ -8,9 +9,9 @@ while [[ $name != "done" ]]; do
 		echo $name >> authusers.txt
 	fi
 done
-awk -F: '($3>=1000)&&($1!="nobody"){print$1}' /etc/passwd > users.txt
+awk -F: '($3>=1000)&&($1!="nobody")&&($3=0){print$1}' /etc/passwd > users.txt
 while read i; do
-        grep -q$i users.txt
+        grep -q $i users.txt
         if [[ "$?" -eq 1 ]];then
                 useradd "$i"
         fi
