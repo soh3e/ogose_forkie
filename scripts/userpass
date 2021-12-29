@@ -1,4 +1,13 @@
 #!/bin/bash
+name=""
+while [[ $name != "done" ]]; do
+	read -p "Name of authorized user: " name
+	if [[ $name == "done" ]]; then
+		echo "done"
+	else
+		echo $name >> authusers.txt
+	fi
+done
 awk -F: '($3>=1000)&&($1!="nobody"){print$1}' /etc/passwd > users.txt
 while read i; do
         grep -q$i users.txt
