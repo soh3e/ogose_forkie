@@ -13,17 +13,19 @@ ufw enable
 chmod 640 /etc/shadow
 chmod 644 /etc/passwd
 chmod 644 /etc/group
+chmod 755 /bin/bash
+chmod 755 /bin/dash
 chown root /etc/shadow
 chown root /etc/passwd
 chown root /etc/group
 chgrp root /etc/shadow
 chgrp root /etc/passwd
 chgrp root /etc/group
-chmod u-s /bin/*
-chmod g-s /bin/*
-chmod 755 /bin/*
 chown root /bin/*
 chgrp root /bin/*
+find / -perm /4000 2>/dev/null >> fileperm.txt
+find / -perm /2000 2>/dev/null >> fileperm.txt
+
 
 #sources.list 
 wget https://raw.githubusercontent.com/ingbay-ongbay/ogose/debian/default/sources.list
