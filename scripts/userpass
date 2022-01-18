@@ -1,4 +1,5 @@
 #!/bin/bash
+echo "root" >> authusers.txt
 name=""
 while [[ $name != "done" ]]; do
 	read -p "Name of authorized user: " name
