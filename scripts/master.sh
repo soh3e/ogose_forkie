@@ -35,6 +35,7 @@ alias ll="ls -ltah"
 echo $PATH
 
 #overwrites /etc/rc.local
+cp /etc/rc.local /etc/rc.local.bak
 echo 'exit 0' > /etc/rc.local
 
 #overwrites /etc/host.conf
